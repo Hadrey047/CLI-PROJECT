@@ -1,77 +1,52 @@
-
-
-from sqlalchemy import ForeignKey, Table, Column, Integer, String
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy import Table, Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-
-
-
 
 Base = declarative_base()
 
-
+# Define the association table
 all_user = Table(
-    'all_users',
+    'all_user',
     Base.metadata,
-    user_id = Column(Integer(), ForeignKey('users.id')),
-    menus_id = Column(Integer(), ForeignKey('menus.id')),
-    extend_existing=True,
+    Column('user_id', Integer, ForeignKey('users.id')),
+    Column('menu_id', Integer, ForeignKey('menus.id'))
 )
 
 class Users(Base):
     __tablename__ = 'users'
 
-    id = Column(Integer(), primary_key=True)
-    first_name = Column(String())
-    last_name = Column(String())
-    email = Column(String())
-    phone_number = Column(Integer())
+    id = Column(Integer, primary_key=True)
+    first_name = Column(String)
+    last_name = Column(String)
+    email = Column(String)
+    phone_number = Column(Integer)
     
-    menu = relationship('Menus', secondary= all_user, back_populates='users')
-    restuarant = relationship('Restuarant', backref=backref('user'))
-     
-def __repr__(self):
-        return f'Users(id={self.id}, ' + \
-            f'fisrt_name={self.first_name}, ' + \
-            f'last_name={self.last_name}, ' + \
-            f'email={self.email}, ' + \
-            f'phone_number={self.phone_number},)' 
-            
-            
+    # Define the many-to-many relationship with Menus
+    menus = relationship('Menus', secondary=all_user, back_populates='users')
+    restaurants = relationship('Restaurant', backref='user')
+
 class Menus(Base):
     __tablename__ = 'menus'
 
-    id = Column(Integer(), primary_key=True)
-    breakfast = Column(String())
-    lunch = Column(String())
-    dinner=Column(String())
-    ethnic = Column(String())
+    id = Column(Integer, primary_key=True)
+    breakfast = Column(String)
+    lunch = Column(String)
+    dinner = Column(String)
+    ethnic = Column(String)
     
+    # Define the many-to-many relationship with Users
     users = relationship('Users', secondary=all_user, back_populates='menus')
-    restuarant = relationship('Restuarant', backref=backref('menu'))
+    restaurants = relationship('Restaurant', backref='menu')
 
-def __repr__(self):
-        return f'Menus(id={self.id}, ' + \
-            f'breakfast={self.breakfast}, ' + \
-            f'lunch={self.lunch}, ' + \
-            f'dinner={self.dinner}, ' + \
-            f'ethnic={self.ethnic},)' 
+class Restaurant(Base):
+    __tablename__ = 'restaurants'
 
+    id = Column(Integer, primary_key=True)
+    soft_drink = Column(String)
+    alcoholic_drink = Column(String)
+    wine = Column(String)
 
-class Restuarant(Base):
-    __tablename__ = 'restuarant'
-
-    id = Column(Integer(), primary_key=True)
-    soft_drink = Column(String())
-    alcholic_drink = Column(String())
-    wine =Column(String())
-
-    user_id = Column(Integer(), ForeignKey('users.id'))
-    menus_id = Column(Integer(), ForeignKey('menus.id'))
-
-def __repr__(self):
-        return f'Restuarant(id={self.id}, ' + \
-            f'soft_drink={self.soft_drink}, ' + \
-            f'alcholic_drink={self.alcholic_drink}, ' + \
-            f'wine={self.wine},)' 
+    # Define foreign keys for the relationships
+    user_id = Column(Integer, ForeignKey('users.id'))
+    menu_id = Column(Integer, ForeignKey('menus.id'))
 
