@@ -1,46 +1,49 @@
 ## DOFAS KITCHEN APP
 
-This is a Commmand Line Interface Application that have the functionality of 
-allowing users to register their details on the applicaation and also have access
-to all the features in the applicatiom.
+The DOFAS KITCHEN APP is a Command Line Interface (CLI) application that provides users with the ability to register their details and access various features within the application.
 
-CLI-Tool is a command line interface designed to streamline your tasks and enhance your command line experience. Whether you're a seasoned developer or a casual user, CLI-Tool is here to make your interactions with the command line more efficient and enjoyable.
+### Features
 
-## Features
-1. **Intuitive Commands:** CLI-Tool provides a set of intuitive commands to perform common tasks effortlessly.
+1. **User Registration:** Register your personal details in the application.
+2. **Custom CLI Commands:** Perform various tasks using intuitive command-line commands.
+3. **Access Data:** Retrieve and interact with user and menu data.
+4. **Database Management:** Manage user profiles, menus, and restaurant information.
+5. **Interconnected Data:** Users, menus, and restaurants are interconnected for a comprehensive experience.
 
-2. **Customization:** Tailor CLI-Tool to your preferences with customizable settings and themes.
+### Installation
 
-3. **Smart Suggestions:** Enjoy the convenience of smart command suggestions that adapt to your usage patterns.
-
-4. **Plugin Support:** Extend the functionality of CLI-Tool with a variety of plugins for different use cases.
-
-5. **Helpful Documentation:** Access comprehensive documentation with examples for each command to make your learning curve smoother.
-
-## Installation
-1. Clone the repository: `git clone https://github.com/Hadrey047/CLI_Project.git`
-2. Navigate to the CLI-Tool directory: `cd cli-tool`
+1. Clone the repository: `git clone https://github.com/YourGitHubUsername/DOFAS-KITCHEN-APP.git`
+2. Navigate to the DOFAS KITCHEN APP directory: `cd DOFAS-KITCHEN-APP`
 3. Run the installation script: `./install.sh`
 
-## Getting Started
+### Getting Started
+
 1. Open your terminal.
-2. Type `cli-tool` to launch the CLI-Tool.
+2. Type `dofas-kitchen` to launch the DOFAS KITCHEN APP.
 
-## Commands
-- `help`: Display the help menu with information about available commands.
-- `run [script]`: Execute a custom script or command.
+### Commands
 
-## Configuration
-- Use the `config` command to customize your CLI-Tool settings.
+- `add-user [first_name] [last_name] [email] [phone_number]`: Add a new user to the database.
+- `add-menu [breakfast] [lunch] [dinner] [ethnic]`: Add a new menu to the database.
+- `add-restaurant [soft_drink] [alcoholic_drink] [wine] [user_id] [menu_id]`: Add a new restaurant to the database.
+- `list-users-menus-restaurants`: List all users, their menus, and corresponding restaurants.
 
-## Examples
-- Run a script: `cli-tool run my_script.sh`
-- Change theme: `cli-tool config theme dark`
+### Examples
 
-## Feedback
-We value your feedback! If you encounter any issues or have suggestions for improvement, please visit our GitHub repository [https://github.com/Hadrey047] to open an issue.
+- Add a new user: `dofas-kitchen add-user "Mary" "Francis" "john@example.com" 1234567890`
+- Add a new menu: `dofas-kitchen add-menu "Pancakes" "Burger" "Pizza" "Italian"`
+- Add a new restaurant: `dofas-kitchen add-restaurant "Coke" "Wine" "RedWine" 1 2`
+- List users, menus, and restaurants: `dofas-kitchen list-users-menus-restaurants`
 
-Thank you for using CLI-Tool! Happy coding!
+### Configuration
+
+- Configuration settings for the DOFAS KITCHEN APP can be customized using the `config` command.
+
+### Feedback
+
+Your feedback is important to us! If you encounter any issues or have suggestions for improvement, please visit our GitHub repository [https://github.com/YourGitHubUsername/DOFAS-KITCHEN-APP] to open an issue.
+
+Thank you for using the DOFAS KITCHEN APP! Enjoy exploring the world of food and users!
 
 ---
 
